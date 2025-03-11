@@ -1,16 +1,18 @@
 package gameEnv;
 
+import gameEnv.map.Map;
 import renderWindow.GameEnvironment.GameEnvironment;
-import renderWindow.GameEnvironment.renderable.renderObject.RenderObject;
+//import renderWindow.GameEnvironment.renderable.renderObject.RenderObject;
 import renderWindow.GameEnvironment.renderable.renderScreen.RenderScreen;
 
 public class StrategyGame extends GameEnvironment{
 
     public StrategyGame(int w, int h) {
         super(w, h);
-        RenderScreen rs = new RenderScreen(100,100);
-        addRenderable(rs);
-        rs.addObj(new RenderObject(300,100,100,100));
+        RenderScreen r = new RenderScreen(w, h);
+        Map m = new Map(0,0,5,5);
+        addRenderable(r);
+        r.addObj(m);
 
         run();
     }

@@ -19,6 +19,7 @@ public class GameEnvironment {
     private int objH;
     private ArrayList<RenderScreen> render;
     private Window win;
+    private RenderScreen rendering;
     public GameEnvironment(int w, int h) {
         objW = w;
         objH = h;
@@ -27,9 +28,14 @@ public class GameEnvironment {
     }
 
     public void draw(Graphics pen) {
-        for(int draw = 0; draw < render.size(); draw++) {
-            if(render.get(draw)!=null) {
-                render.get(draw).draw(pen);
+        if(rendering!=null) {
+            rendering.draw(pen);
+        }
+        else {
+            for(int draw = 0; draw < render.size(); draw++) {
+                if(render.get(draw)!=null) {
+                    render.get(draw).draw(pen);
+                }
             }
         }
     }
@@ -46,6 +52,9 @@ public class GameEnvironment {
 
     }
 
+
+    //render stuff
+    public void setRendering(RenderScreen r) {rendering = r;}
     public void addRenderable(RenderScreen r) {render.add(r);}
     public void removeRenderable(RenderScreen r) {render.remove(r);}
 
