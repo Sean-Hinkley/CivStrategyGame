@@ -32,11 +32,15 @@ public class Camera extends RenderObject{
         ArrayList<String> k = this.getKeys().getAllPressed();
         for(String s: k) {
             
-            if(s.equals("up")) {setObjY(getObjY()-5);System.out.println("hellosss");}
+            if(s.equals("up")) {setObjY(getObjY()-5);}
             if(s.equals("down")) {setObjY(getObjY()+5);}
             if(s.equals("left")) {setObjX(getObjX()-5);}
             if(s.equals("right")) {setObjX(getObjX()+5);}
         }
+        System.out.println("X: " + this.getObjX());
+        System.out.println("Y: " + this.getObjY());
+        System.out.println("W: " + this.getObjW());
+        System.out.println("H: " + this.getObjH());
     }
     
 }

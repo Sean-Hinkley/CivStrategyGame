@@ -76,5 +76,5 @@ public class Map extends RenderObject{
     }
 
     public int getTileX(int x) {return (int) (x/(scale*size));}
-    public int getTileY(int y) {return (int) (y/scale*size);}
+    public int getTileY(int y) {return (int) (y/(scale*size));}
 }

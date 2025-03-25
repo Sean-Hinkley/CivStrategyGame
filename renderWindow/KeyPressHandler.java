@@ -53,14 +53,14 @@ public class KeyPressHandler {
         }
         public void press(int c) {
             if(code == c) {
-                System.out.println("Pressed");
+                //System.out.println("Pressed");
                 state = true;
             }
             
         }
         public void release(int c) {
             if(code == c) {
-                System.out.println("Released");
+                //System.out.println("Released");
                 state = false;
             }
         }
