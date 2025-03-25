@@ -3,13 +3,14 @@ package renderWindow.GameEnvironment.renderable.renderScreen;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import renderWindow.KeyPressHandler;
 import renderWindow.GameEnvironment.renderable.Renderable;
 import renderWindow.GameEnvironment.renderable.renderObject.RenderObject;
 
 public class RenderScreen extends Renderable{
     private ArrayList<RenderObject> render;
-    public RenderScreen(int w, int h) {
-        super(0, 0, w, h);
+    public RenderScreen(int w, int h, KeyPressHandler k) {
+        super(0, 0, w, h, k);
         render = new ArrayList<>();
     }
 
@@ -18,6 +19,14 @@ public class RenderScreen extends Renderable{
             if(render.get(draw)!=null) {
                 render.get(draw).draw(pen);
             }
+        }
+    }
+
+    public void update() {
+        keyActions();
+        for(RenderObject o: render) {
+            
+            o.update();
         }
     }
 

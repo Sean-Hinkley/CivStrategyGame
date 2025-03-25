@@ -18,12 +18,18 @@ public class Window implements KeyListener, MouseListener, MouseMotionListener,M
     JFrame frame;
     GameEnvironment game;
     GamePanel panel;
+    KeyPressHandler keys = new KeyPressHandler();
     public Window(int w, int h, GameEnvironment g) {
         frame = new JFrame();
+        keys = new KeyPressHandler();
         game = g;
         frame.setSize(w, h);
         panel = new GamePanel();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addKeyListener(this);
+        frame.addMouseListener(this);
+        frame.addMouseMotionListener(this);
+        frame.addMouseWheelListener(this);
         frame.getContentPane().add(BorderLayout.CENTER, panel);
         frame.setVisible(true);
     }
@@ -35,6 +41,10 @@ public class Window implements KeyListener, MouseListener, MouseMotionListener,M
             catch (InterruptedException e) {}
             frame.repaint();
         }
+    }
+
+    public KeyPressHandler getHandler() {
+        return keys;
     }
 
     public class GamePanel extends JPanel {
@@ -52,6 +62,6 @@ public class Window implements KeyListener, MouseListener, MouseMotionListener,M
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void keyTyped(KeyEvent e) {}
-    public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
+    public void keyPressed(KeyEvent e) {keys.keyPressed(e);}
+    public void keyReleased(KeyEvent e) {keys.keyReleased(e);}
 }

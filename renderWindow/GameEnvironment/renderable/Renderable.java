@@ -5,20 +5,27 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
+import renderWindow.KeyPressHandler;
+
 
 
 public abstract class Renderable {
     String title;
+    private KeyPressHandler keys;
     private int objX;
     private int objY;
     private int objW;
     private int objH;
     private Script script;
 
-    public Renderable(int x, int y, int w, int h) {setShape(x, y, w, h);}
+    public Renderable(int x, int y, int w, int h, KeyPressHandler k) {
+        keys = k;
+        setShape(x, y, w, h);
+        setKeys();
+    }
 
     public void draw(Graphics pen) {}
-    public void update() {}
+    public void update() {keyActions();}
     public void inputs() {}
 
     //Shape Getters and Setters
@@ -28,6 +35,17 @@ public abstract class Renderable {
         setObjW(w);
         setObjH(h);
 
+    }
+
+    public void setKeys() {
+    }
+
+    public void keyActions() {
+
+    }
+
+    public KeyPressHandler getKeys() {
+        return keys;
     }
     public void setObjX(int x) {objX = x;}
     public int getObjX() {return objX;}
