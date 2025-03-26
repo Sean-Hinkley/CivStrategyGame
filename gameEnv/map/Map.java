@@ -2,15 +2,20 @@ package gameEnv.map;
 
 import java.awt.Graphics;
 
+import gameEnv.map.TileBiomes.GrassBiome;
+import gameEnv.map.TileBiomes.LakeBiome;
+import gameEnv.map.TileBiomes.SandBiome;
+import gameEnv.map.TileBiomes.TileBiome;
 import renderWindow.KeyPressHandler;
+import renderWindow.GameEnvironment.drawObject;
 import renderWindow.GameEnvironment.renderable.renderObject.RenderObject;
 
 public class Map extends RenderObject{
     private double scale = 1.0;
     private Tile[][] tiles;
     private int size = 128;
-    public Map(int x, int y, int w, int h, KeyPressHandler k) {
-        super(x, y, w*128, h*128,null,null,k);
+    public Map(int x, int y, int w, int h, KeyPressHandler k,drawObject d) {
+        super(x, y, w*128, h*128,null,null,k,d);
         tiles = new Tile[w][h];
         setTiles();
         //TODO Auto-generated constructor stub
@@ -19,10 +24,24 @@ public class Map extends RenderObject{
     public void setTiles() {
         for(int x = 0; x < tiles.length; x++) {
             for(int y = 0; y < tiles[0].length; y++) {
-                //System.out.println();
-                tiles[x][y] = new Tile(x, y,this.getKeys());
+                tiles[x][y] = new Tile(x, y,this.getKeys(),(drawObject)this,randBiome());
             }
         }
+    }
+
+    public TileBiome randBiome() {
+        int rand = (int)(Math.random()*2);
+        switch (rand) {
+            case 0:
+                return new SandBiome();
+            case 1:
+                return new GrassBiome();
+            case 2:
+                return new LakeBiome();
+
+        }
+
+        return null;
     }
 
     public void draw(Graphics pen) {
@@ -62,7 +81,7 @@ public class Map extends RenderObject{
             }
         }
 
-        //System.out.println(tile);
+
         return tile;
     }
 

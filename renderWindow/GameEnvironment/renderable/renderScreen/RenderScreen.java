@@ -7,13 +7,14 @@ import java.util.ArrayList;
 //import org.w3c.dom.events.MouseEvent;
 
 import renderWindow.KeyPressHandler;
+import renderWindow.GameEnvironment.drawObject;
 import renderWindow.GameEnvironment.renderable.Renderable;
 import renderWindow.GameEnvironment.renderable.renderObject.RenderObject;
 
 public class RenderScreen extends Renderable{
     private ArrayList<RenderObject> render;
-    public RenderScreen(int w, int h, KeyPressHandler k) {
-        super(0, 0, w, h, k);
+    public RenderScreen(int w, int h, KeyPressHandler k, drawObject d) {
+        super(0, 0, w, h, k,d);
         render = new ArrayList<>();
     }
 

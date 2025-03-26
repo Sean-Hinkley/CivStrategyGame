@@ -11,7 +11,7 @@ public class ResourceHandler {
 
     public void harvest() { 
         for(ResourceAmount r : resources) {
-            if(r!=null) System.out.println(r);
+        
         }
     }
 

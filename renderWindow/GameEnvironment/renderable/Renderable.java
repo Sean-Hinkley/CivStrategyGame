@@ -6,10 +6,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
 import renderWindow.KeyPressHandler;
+import renderWindow.GameEnvironment.drawObject;
 
 
 
-public abstract class Renderable {
+public abstract class Renderable implements drawObject{
     String title;
     private KeyPressHandler keys;
     private int objX;
@@ -17,9 +18,10 @@ public abstract class Renderable {
     private int objW;
     private int objH;
     private Script script;
-
-    public Renderable(int x, int y, int w, int h, KeyPressHandler k) {
+    private drawObject parent;
+    public Renderable(int x, int y, int w, int h, KeyPressHandler k, drawObject d) {
         keys = k;
+        parent = d;
         setShape(x, y, w, h);
         setKeys();
     }
@@ -65,7 +67,9 @@ public abstract class Renderable {
     public void mouseWheelMoved(MouseWheelEvent e) {}
     public void mouseDragged(MouseEvent e) {}
     public void mouseMoved(MouseEvent e) {}
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+        if((e.getX()-8 > this.getObjX() && e.getX()-8 < this.getObjX()+this.getObjW()) && (e.getY()-8 > this.getObjY() && e.getY()-8 < this.getObjY()+this.getObjH())) this.clicked();
+    }
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
@@ -73,5 +77,12 @@ public abstract class Renderable {
     public void keyTyped(KeyEvent e) {}
     public void keyPressed(KeyEvent e) {}
     public void keyReleased(KeyEvent e) {}
+
+    public void clicked() {
+
+    }
+
+    public void setParent(drawObject r) {parent = r;}
+    public drawObject getParent() { return parent;}
 
 }

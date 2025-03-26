@@ -6,8 +6,9 @@ import gameEnv.ResourceHandlers.ResourceHandler;
 public abstract class TileBiome {
     
     private ResourceHandler resources;
-
-    public TileBiome() {
+    private String imgstr;
+    public TileBiome(String s) {
+        imgstr = s;
         resources = new ResourceHandler();
         setResources();
     }
@@ -21,4 +22,6 @@ public abstract class TileBiome {
     public void addResource(double a, Resource r) {
         resources.addResource(a, r);
     }
+
+    public String toString() {return imgstr;}
 }
