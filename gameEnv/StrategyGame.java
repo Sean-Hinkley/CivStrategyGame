@@ -14,10 +14,12 @@ public class StrategyGame extends GameEnvironment{
     public StrategyGame(int w, int h) {
         super(w, h);
         RenderScreen r = new RenderScreen(w, h,getkeys());
-        m = new Map(0,0,20,20,this.getkeys());
-        cam = new Camera(100, 100, w, h, getkeys(), m);
-        
+        RenderScreen mainmenu = new RenderScreen(w, h, getkeys());
+        m = new Map(0,0,10,10,this.getkeys());
+        cam = new Camera(400, 500, w, h, getkeys(), m);
+        addRenderable(mainmenu);
         addRenderable(r);
+        setRendering(mainmenu);
         r.addObj(cam);
 
         run();

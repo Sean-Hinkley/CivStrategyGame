@@ -28,6 +28,7 @@ public class GameEnvironment {
         win = new Window(objW,objH,this);
         keys = win.getHandler();
         setKeys();
+        rendering = null;
     }
 
     public void draw(Graphics pen) {
@@ -76,7 +77,13 @@ public class GameEnvironment {
     public void mouseWheelMoved(MouseWheelEvent e) {}
     public void mouseDragged(MouseEvent e) {}
     public void mouseMoved(MouseEvent e) {}
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {
+        for(RenderScreen r: render) {
+            if(r!=null) {
+                r.mouseClicked(e);;
+            }
+        }
+    }
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}

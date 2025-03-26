@@ -20,7 +20,7 @@ public class Map extends RenderObject{
         for(int x = 0; x < tiles.length; x++) {
             for(int y = 0; y < tiles[0].length; y++) {
                 //System.out.println();
-                tiles[x][y] = new Tile(getObjX()+(x*128), getObjY()+(y*128),this.getKeys());
+                tiles[x][y] = new Tile(x, y,this.getKeys());
             }
         }
     }
@@ -62,14 +62,16 @@ public class Map extends RenderObject{
             }
         }
 
-
+        //System.out.println(tile);
         return tile;
     }
+
+    
 
 
 
     public Tile getTile(int x, int y) {
-        if(x > 0 && x < tiles.length && y > 0 && y < tiles[x].length) {
+        if(x >= 0 && x < tiles.length && y >= 0 && y < tiles[x].length) {
             return tiles[x][y];
         }
         return null;

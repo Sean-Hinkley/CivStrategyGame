@@ -30,6 +30,7 @@ public class Window implements KeyListener, MouseListener, MouseMotionListener,M
         frame.addMouseListener(this);
         frame.addMouseMotionListener(this);
         frame.addMouseWheelListener(this);
+        frame.setResizable(false);
         frame.getContentPane().add(BorderLayout.CENTER, panel);
         frame.setVisible(true);
     }
@@ -56,7 +57,7 @@ public class Window implements KeyListener, MouseListener, MouseMotionListener,M
     public void mouseWheelMoved(MouseWheelEvent e) {if(game!=null) game.mouseWheelMoved(e);}
     public void mouseDragged(MouseEvent e) {}
     public void mouseMoved(MouseEvent e) {}
-    public void mouseClicked(MouseEvent e) {}
+    public void mouseClicked(MouseEvent e) {if(game!=null) game.mouseClicked(e);}
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
